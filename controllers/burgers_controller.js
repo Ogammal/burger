@@ -4,18 +4,17 @@ var router = express.Router();
 
 
 router.get("/", function(req, res) {
-    burger.selectAll(function(err, data) {
-        if (err) throw err;
+    burger.selectAll(function(data) {
         res.render('index', { burgers: data });
     });
 })
 
-router.post("/api/:burgerName", function(req, res) {
+router.post("/api/burgerName", function(req, res) {
     console.log(req.body);
     var burgerName = req.body.burgerName;
+    var columnName = "burger_name"
     console.log("burger name is: " + burgerName);
-    burger.insertOne(burgerName, function(err, data) {
-        if (err) throw err;
+    burger.insertOne(columnName, burgerName, function(data) {
         res.redirect("/")
     })
 })
