@@ -19,4 +19,12 @@ router.post("/api/burgerName", function(req, res) {
     })
 })
 
+router.put("/api/:burgerId", function(req, res) {
+    console.log("burgerID: " + req.params.burgerId)
+    var burgerId = req.params.burgerId
+    burger.updateOne(burgerId, function(data) {
+        res.json(data);
+    })
+})
+
 module.exports = router;

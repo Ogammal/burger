@@ -10,17 +10,16 @@ var orm = {
         });
     },
     insertOne: function(table, col, val, callback) {
-        console.log(val)
         var queryString = "INSERT INTO ?? (??) VALUES (?)";
-        console.log(queryString)
         connection.query(queryString, [table, col, val], function(err, result) {
             console.log(connection.query)
             if (err) throw err;
             callback(result);
         })
     },
-    updateOne: function(table, col1, val1, col2, val2) {
-        var queryString = "INSERT INTO ?? SET ?? = ? WHERE ?? = ?";
+    updateOne: function(table, col1, val1, col2, val2, callback) {
+        console.log(col1, val1, col2, val2)
+        var queryString = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
         connection.query(queryString, [table, col1, val1, col2, val2], function(err, result){
             if (err) throw err;
             callback(result);

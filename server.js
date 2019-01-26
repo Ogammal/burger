@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory to be served
-app.use(express.static("/public"));
+app.use(express.static(__dirname+ '/public'));
 
 var exphbs = require('express-handlebars');
 
